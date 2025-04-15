@@ -68,6 +68,12 @@
 - semaphore based counter
 - Can block the execution of a function until the counter becomes 0
 
+### Data Race
+```shell
+go run --race 05-demo.go
+```
 
-
+```shell
+go build --race -o 05-demo-wrd 05-demo.go
+```
 
