@@ -77,3 +77,37 @@ go run --race 05-demo.go
 go build --race -o 05-demo-wrd 05-demo.go
 ```
 
+### Channels
+- data type designed to enable communication between goroutines
+- use the channel operator (<-) to send & receive data through the channel
+
+#### Declaration
+```go
+var ch chan int
+```
+
+#### Initialization
+```go
+ch = make(chan int)
+```
+
+#### Declaration & Initialization
+```go
+var ch chan int = make(chan int)
+// OR
+var ch = make(chan int)
+// OR
+ch := make(chan int)
+```
+
+#### Communication
+##### Send operation
+```go
+ch <- 100
+```
+##### Receive operation
+```go
+data := <- ch
+```
+#### Channel Behavior
+![image](./images/channel-behavior.png)
