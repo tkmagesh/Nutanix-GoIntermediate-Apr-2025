@@ -37,12 +37,37 @@
         - variadic functions
         - anonymous functions
         - higher order functions
+        - deferred functions
     - error handling
     - panic & recovery
     - modules & packages
     - OOP
         - structs (methods)
         - interfaces
+
+## Concurrency in Go
+
+### Concurrency Programming
+- Application is designed to have more than one execution path
+
+### Managed Concurrency
+- Builtin Scheduler
+- Concurrent operations are represented as "goroutines"
+- goroutines are cheap (~2KB)
+- goroutines are scheduled by the scheduler to be executed by the OS threads
+- Go scheduler uses both "cooperative" & "preemptive" strategies
+
+### Language support
+- Support for concurrency is built in the language itself
+- "go" keyword, "chan" data type, "<-" operator, "range" & "select-case" constructs
+- sdk support
+    - "sync" package
+    - "sync/atomic" package
+
+### sync.WaitGroup
+- semaphore based counter
+- Can block the execution of a function until the counter becomes 0
+
 
 
 
