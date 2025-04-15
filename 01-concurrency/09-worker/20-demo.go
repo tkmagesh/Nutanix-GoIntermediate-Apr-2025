@@ -21,14 +21,25 @@ func main() {
 
 func generatePrimes(start, end int) <-chan int {
 	primesCh := make(chan int)
+	nosCh := make(chan int)
+	workerCount := 5
+	go func() {
+		for no := start; no <= end; no++ {
+			nosCh <- no
+		}
+		close(nosCh)
+	}()
 	go func() {
 		wg := &sync.WaitGroup{}
-		for no := start; no <= end; no++ {
+		for workerId := range workerCount {
 			wg.Add(1)
 			go func() {
 				defer wg.Done()
-				if isPrime(no) {
-					primesCh <- no
+				for no := range nosCh {
+					fmt.Printf("Worker - %d, processing %d\n", workerId, no)
+					if isPrime(no) {
+						primesCh <- no
+					}
 				}
 			}()
 		}
