@@ -132,3 +132,11 @@ data := <- ch
 - context.WithValue()
     - meant to share data across context hierarchy
     - non-cancellable
+
+## Database Programming
+1. database/sql
+    - standard library package
+2. sqlx
+    - wrapper on database/sql to simplify db communication
+3. sqlc 
+    - code generator
