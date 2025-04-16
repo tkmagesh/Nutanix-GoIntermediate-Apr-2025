@@ -111,3 +111,24 @@ data := <- ch
 ```
 #### Channel Behavior
 ![image](./images/channel-behavior.png)
+
+## Context
+- Initially designed for simplifying "cancel propagation"
+- Has the ability to create a "hierarchy" of contexts
+- Further enhanced to share data among hierarchy of goroutines
+- A context object implements `context.Context` interface
+    - Done() 
+        - returns a channel through which the cancel signal is received
+### Creation
+- context.Background()
+    - meant to create a root context
+    - non-cancellable
+- context.WithCancel()
+    - expects a parent context to be passed
+    - returns a `cancel()` to send the cancel signal
+- context.WithTimeout() & context.WithDeadline()
+    - time based cancellation (automatic)
+    - also allows programmatic cancellation
+- context.WithValue()
+    - meant to share data across context hierarchy
+    - non-cancellable
