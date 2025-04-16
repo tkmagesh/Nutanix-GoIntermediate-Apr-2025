@@ -23,7 +23,7 @@ func main() {
 	}
 }
 
-// refactor the following so that the prime generation stops after 10 seconds
+// refactor the following so that the prime generation stops after the user hits ENTER key
 func generatePrimes(stopCh <-chan struct{}) <-chan int {
 	primesCh := make(chan int)
 	go func() {
